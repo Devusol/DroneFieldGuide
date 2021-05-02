@@ -37,7 +37,6 @@ a:hover {
 	text-decoration: none;
 }
 
-
 h1,
 h2,
 h3,
@@ -225,12 +224,6 @@ button[type="submit"] {
 
 .floatingContact .cc-float-form button[type="button"]:hover {
 	background: var(--cool-grey);
-}
-
-@media (hover: none) {
-	.floatingContact .cc-float-form button[type="button"]:hover {
-		background: var(--slate-blue);
-	}
 }
 
 @-webkit-keyframes animate-loading {
@@ -825,20 +818,8 @@ input[type="date"]::-webkit-clear-button {
 	transition: .5s;
 }
 
-#menu {
-	position: absolute;
-	right: 10px;
-	bottom: 2px;
-	height: 36px;
-	width: 35.5px;
-	border: 3px solid;
-	border-color: var(--cyan-process);
-	border-radius: 12%;
-	cursor: pointer;
-	background-color: var(--cyan-process);
-}
 
-
+/* 
 #menu2 {
 	position: absolute;
 	right: 60px;
@@ -850,7 +831,7 @@ input[type="date"]::-webkit-clear-button {
 	border-radius: 12%;
 	cursor: pointer;
 	background-color: var(--cyan-process);
-}
+} */
 
 /****************************FORM BUTTONS*****************************/
 
@@ -887,14 +868,9 @@ input[type="date"]::-webkit-clear-button {
 	margin: 20px 5px 0 0;
 }
 
-.addBtn:hover {
+.addBtn:hover,
+.addBtn:focus {
 	background: var(--cool-grey);
-}
-
-@media (hover: none) {
-	.addBtn:hover {
-		background: var(--slate-blue);
-	}
 }
 
 @-webkit-keyframes animate-loading {
@@ -1085,3 +1061,86 @@ input[type="date"]::-webkit-clear-button {
 .closebtn:hover {
 	color: black;
 }
+
+/******************************3 STATE*********************/
+
+#menu {
+    position: absolute;
+    right: 37px;
+    bottom: -2px;
+    height: 36px;
+    width: 35.5px;
+/* 	border: 3px solid;
+	border-color: var(--cyan-process);
+	border-radius: 12%;
+	cursor: pointer;
+	background-color: var(--cyan-process); */
+}
+  #menu label {
+	display: none;
+	cursor: pointer;
+	font-size: 17px;
+	right: 10px;
+    bottom: 15px;
+    height: 30px;
+    width: 60px;
+	border: 3px solid;
+	border-color: var(--dark-cornflower-blue);
+	border-radius: 12%;
+	cursor: pointer;
+	background-color: var(--dark-cornflower-blue);
+	text-align: center;
+
+  }
+
+  #menu label:hover {
+	border-color: var(--cyan-process);
+	background-color: var(--cyan-process); 
+
+  }
+  #menu input:checked + label {
+	display: inline-block;
+  }
+  #menu input {
+	display: none;
+  }
+
+  #menu input[value="yes"] + label {
+	color: var(--dark-cornflower-blue);
+	background-image: url(../images/lightThemepicSQ.jpg);
+  }
+  #menu input[value="no"] + label {
+	color: var(--dark-cornflower-blue);
+	background-image: url(../images/darkThemepicSQ.jpg);
+  }
+  #menu input[value="off"] + label {
+	color: var(--dark-cornflower-blue);
+	background-image: url(../images/satellitepicSQ.jpg);
+  }
+
+
+  #menu input[value="yes"] + label:hover {
+	color: var(--lavender-floral);
+	background-image: url(../images/lightThemepicSQ.jpg);
+  }
+  #menu input[value="no"] + label:hover {
+	color: var(--lavender-floral);
+	background-image: url(../images/darkThemepicSQ.jpg);
+  }
+  #menu input[value="off"] + label:hover {
+	color: var(--lavender-floral);
+	background-image: url(../images/satellitepicSQ.jpg);
+  }
+
+
+
+  #menu div {
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Safari */
+	-khtml-user-select: none; /* Konqueror HTML */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none; /* Non-prefixed version, currently
+									supported by Chrome and Opera */
+  }
+  

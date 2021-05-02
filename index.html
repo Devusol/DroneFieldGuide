@@ -108,20 +108,19 @@
       <div id="menu">
 
 
-        <input id="toggleInput" type="checkbox" onclick="switchLayer()">
-        <label for="toggleInput"></label>
-
-      </div>
-
-      <div id="menu2">
-
-
-        <input id="toggleInput2" type="checkbox" onclick="switchSat()">
-        <label for="toggleInput2"></label>
-
-
-      </div>
-
+        <!-- <input id="toggleInput" type="checkbox" onclick="switchLayer()">
+        <label for="toggleInput"></label> -->
+      
+          <input id="yes" type="radio" name="toggleInput" value="yes" checked="checked" onclick="switchLayer(this.value)">
+          <label for="no" title="Change me to Dark or Sat view!">CLICK</label>
+          
+          <input id="no" type="radio" name="toggleInput" value="no" onclick="switchLayer(this.value)">
+          <label for="off" title="Change me to Sat or Light view!">CLICK</label>
+          
+          <input type="radio" id="off" name="toggleInput" value="off" onclick="switchLayer(this.value)">
+          <label for="yes" title="Change me to Light or Dark view!">CLICK</label>
+    
+        
 
       <!--    <input id="dark-v1" type="radio" value="dark" name = "rtoggle" checked="checked" onclick="switchLayer(this.value)">
         <label for="dark-v1">Dark</label>
@@ -153,7 +152,7 @@
 
         <!-- One "tab" for each step in the form: -->
         <div class="tab">
-          <h5>Help add drone sites & help the community?</h5>
+          <h5>Help add a location that you have flown & help the community?</h5>
           <hr>
           <button type="button" id="closeButt">No, Thanks</button>
           <!-- <input type="text" name="location" id="location"> -->
@@ -161,7 +160,7 @@
 
         <div class="tab">
           <div class="form-group">
-            <h5>Over all rating for this site?</h5>
+            <h5>Overall rating for this location flown?</h5>
             <hr>
             <div class="rating" name="rating">
               <input id="star5" name="star" type="radio" value="5 stars" class="radio-btn hide"
@@ -186,7 +185,7 @@
 
         <div class="tab">
           <div class="form-group">
-            <h5>Month & year of flight?</h5>
+            <h5>Month & year when this location was flown?</h5>
             <hr>
 
             <div class="container" id="dateInputs">
@@ -226,7 +225,7 @@
         </div>
 
         <div class="tab">
-          <h5>Comments on the site?</h5>
+          <h5>Comments on this location flown?</h5>
           <hr>
           <textarea class="contact-form-area" id="comment" name="comment" cols="25" rows="3"
             placeholder="Share with the community how your flight experience was:"
@@ -234,7 +233,7 @@
         </div>
 
         <div class="tab" id="uploadTab">
-          <h5>Images to Share?</h5>
+          <h5>Upload images below that you want to share. (click next to add video link)</h5>
           <hr>
           <div id="uploadImage"
             data-plane-upload="b2tocVFWTjZwcVNTTEJFT09lVTBYOVk3aXl5OS8yR3hEeUFwb1N6dGRNQTk0c1M2OFIyTm4ySDlhRzV5eWppMkY4YWVkWCtPd3ZUYjYyS0hrWlc3QkM4ZndLYVFaU1lvbUVzN2pQTjEwRUpxdlRxdWVuY2xvZ1FMR1Jpalo3alJVeFNHT3AyWWljQnB4OU1YVXdOTUliYWl0V0daaEFuSjNMZEt1RXNzckY4PQ==">
@@ -273,7 +272,7 @@
         </div>
 
         <div class="tab">
-          <h5>Videos to share?</h5>
+          <h5>Paste link below of a video that you want to share.</h5>
           <hr>
           <textarea class="contact-form-area" id="videolink" name="videolink" cols="25" rows="1"
             placeholder="Share a link to your video (youtube, vimeo, etc.)"
@@ -281,7 +280,7 @@
         </div>
 
         <div class="tab">
-          <h5>Name or nickname to add to the end of your comment?</h5>
+          <h5>Name or nickname to add to the end of your comment.</h5>
           <hr>
           <br>
           <input class="contact-form-area" id="name" name="name" size="30" type="text" placeholder="Your Name"
@@ -289,7 +288,7 @@
         </div>
 
         <div class="tab" style="padding-bottom: 10px;">
-          <h5>Email?</h5>
+          <h5>Add email below. (optional)</h5>
           <hr>
 
           <input class="contact-form-area" id="email" name="email" size="30" type="email" placeholder="Your Email"
@@ -384,9 +383,6 @@
     <div class="container footer-bottom clearfix" onclick="closeForm()">
       <div class="copyright">
         &copy; Copyright <strong><span>107 Aviation</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
       <div>
         <a class="cprivacy" href="https://www.privacypolicies.com/live/3a7a8363-3fb9-4a2d-97ff-2c801daa0454">Privacy

@@ -104,40 +104,31 @@ function delayHero() {
 }
 
 //Changed from Dark to Light Theme
-var darkLightToggle = document.getElementById("toggleInput");
-//var darkLightCSS = document.getElementById("toggleStyle");
+//var mainToggle = document.querySelector('input[name="toggleInput"]:checked');
 
-//Changed from Terrain to Satellite
-var satToggle = document.getElementById("toggleInput2");
 //var darkLightCSS = document.getElementById("toggleStyle");
 
 
-function switchLayer() {
-  if (darkLightToggle.checked) {
 
-    if (satToggle.checked) {
-      return;
-    }
+function switchLayer(isChecked) {
+  console.log("iaminswitch",isChecked);
+  
+  if (isChecked == "yes") {
 
-    map.setStyle('mapbox://styles/107aviation/ckn6p0fw00j5t18pbncx5s9eg')
-  } else {
-
-    if (satToggle.checked) {
-      return;
-    }
-    // map.setStyle('mapbox://styles/107aviation/cknp00v4w1t1h17mybsp7m22q');
     map.setStyle('mapbox://styles/107aviation/cknouazib1olc17tclqd3gef4');
-  }
-}
+   
+  } else if (isChecked == "no"){
 
-function switchSat() {
-  if (satToggle.checked) {
+    map.setStyle('mapbox://styles/107aviation/ckn6p0fw00j5t18pbncx5s9eg');
+    
+  }
+  else{
     map.setStyle('mapbox://styles/107aviation/cknrryurm10j217quq5p0ri4j')
-  } else {
-
-    switchLayer();
+   
+    
   }
 }
+
 
 function logStuff(inFrom) {
   console.log(inFrom);
