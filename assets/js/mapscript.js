@@ -1,4 +1,6 @@
-mapboxgl.accessToken = "pk.eyJ1IjoiMTA3YXZpYXRpb24iLCJhIjoiY2tuNmhzeWo2MGU5MTJ1am5jNml3cGRzNyJ9.o4UxcDcG8oQkylhgJ_OrQg";
+mapboxgl.accessToken = "pk.eyJ1IjoiMTA3YXZpYXRpb24iLCJhIjoiY2ttcWlndnNnMTA3NDJ3bnhmMjVzMXIxZiJ9.fjiDSkC_TC3ztI8bV-5KMw";
+
+//"pk.eyJ1IjoiMTA3YXZpYXRpb24iLCJhIjoiY2tuNmhzeWo2MGU5MTJ1am5jNml3cGRzNyJ9.o4UxcDcG8oQkylhgJ_OrQg";
 var map = new mapboxgl.Map({
   container: "map", // container id
   style: "mapbox://styles/107aviation/cknouazib1olc17tclqd3gef4", // stylesheet location
@@ -10,11 +12,12 @@ var marker = new mapboxgl.Marker({
 });
 var popup;
 var formElement = document.getElementById("contributeForm");
+var point;
 
 //Popup Card Function
 map.on("click", function (e) {
-  
-var resetForm = document.getElementById("regForm");
+
+  var resetForm = document.getElementById("regForm");
 
   if (resetForm) {
     console.log("form Reset")
@@ -45,6 +48,7 @@ var resetForm = document.getElementById("regForm");
   let image = feature.properties.image;
   let video = feature.properties.video;
   let htmlString;
+  let spotlight = feature.properties.spotlight;
 
   if (image) {
     htmlString = `<h3>${title}</h3>
@@ -146,12 +150,12 @@ map.on("click", function (e) {
     return;
   };
 
-  
-/*   popupForm.on('close', function () {
 
-    resetForm.reset();
-    console.log("Form should reset")
-  }); */
+  /*   popupForm.on('close', function () {
+  
+      resetForm.reset();
+      console.log("Form should reset")
+    }); */
 
 });
 
