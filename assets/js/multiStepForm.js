@@ -149,8 +149,22 @@ function setFormDate() {
     var yearsVar = document.getElementById("new-years");
     var monthsText = monthsVar.options[monthsVar.selectedIndex].text;
     var yearsText = yearsVar.options[yearsVar.selectedIndex].text;
+    var monthConvertint = parseInt(monthsText.substring(0, 2));
+    var todayDate = new Date();
+    var currentYear = todayDate.getFullYear();
+    var currentMonth = todayDate.getMonth() + 1;
     if (monthsText == "Month:") monthsText = "No Month";
     var monthYear = monthsText + " " + yearsText;
+
+    if (yearsText == currentYear && monthConvertint >= currentMonth + 1) {
+        console.log("Invalid Month");
+        document.getElementById("invalidDate").innerHTML = "Invalid Date *";
+        } else {
+            console.log("all months are valid");
+            console.log(currentMonth , currentYear);
+            console.log( parseInt(monthsText.substring(0, 2)));
+            document.getElementById("invalidDate").innerHTML = "Valid Date, Clear";
+    }
 
     document.getElementById("finalDate").value = monthYear;
     nextButton.style.background = "var(--slate-blue)";
