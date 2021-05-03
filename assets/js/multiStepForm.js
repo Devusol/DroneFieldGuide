@@ -130,7 +130,7 @@ function validateForm(whichForm) {
 function setSliderIndicator(activeSlide) {
     // This function removes the "active" class of all steps...
     for (let item of stepTracer) {
-            item.className = item.className.replace(" active", "");
+        item.className = item.className.replace(" active", "");
     }
 
     stepTracer[activeSlide].className += " active";
@@ -149,18 +149,36 @@ function setFormDate() {
     var yearsVar = document.getElementById("new-years");
     var monthsText = monthsVar.options[monthsVar.selectedIndex].text;
     var yearsText = yearsVar.options[yearsVar.selectedIndex].text;
-    var monthConvertint = parseInt(monthsText.substring(0, 2));
+
+   
+    //parseInt(monthsText.substring(0, 2));
+
     var todayDate = new Date();
     var currentYear = todayDate.getFullYear();
     var currentMonth = todayDate.getMonth() + 1;
+
     if (monthsText == "Month:") monthsText = "No Month";
+    
+    if (yearsVar.selectedIndex == 0) {
+        document.getElementById("invalidDate").innerHTML = "Please select a year! *";
+        nextButton.style.background = "var(--cool-grey)"
+        proceed = false;
+        return;
+    }
+
     var monthYear = monthsText + " " + yearsText;
 
-    if (yearsText == currentYear && monthConvertint >= currentMonth + 1) {
+    //console.log(monthConvertint.selectedIndex);
+
+    if (yearsText == currentYear && monthsVar.selectedIndex > currentMonth) {
+        nextButton.style.background = "var(--cool-grey)"
         document.getElementById("invalidDate").innerHTML = "Invalid Date Selected! *";
-        } else {
-            document.getElementById("invalidDate").innerHTML = " ";
+        proceed = false;
+        return;
+    } else {
+        document.getElementById("invalidDate").innerHTML = " ";
     }
+
 
     document.getElementById("finalDate").value = monthYear;
     nextButton.style.background = "var(--slate-blue)";
@@ -177,6 +195,7 @@ form.addEventListener('reset', function () {
     currentTab = 0;
     setSliderIndicator(currentTab);
     showTab(currentTab); // Display the current tab
+    document.getElementById("invalidDate").innerHTML = " ";
 });
 
 function finalForm() {
