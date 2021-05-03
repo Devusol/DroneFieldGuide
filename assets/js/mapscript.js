@@ -80,7 +80,8 @@ map.on("click", function (e) {
   }
 
   popup = new mapboxgl.Popup({
-    anchor: 'bottom'
+    anchor: 'bottom',
+    focusAfterOpen: false
   }).setLngLat(feature.geometry.coordinates)
     .setHTML(htmlString)
     .addTo(map);
@@ -170,15 +171,15 @@ map.on("load", function (e) {
     console.log(findSpotlight.properties.spotlight);
     if (findSpotlight.properties.spotlight) {
       feature = findSpotlight;
-      
+
       map.flyTo({ center: feature.geometry.coordinates });
       let title = feature.properties.title;
       let flightDate = feature.properties.latestDate;
       let image = feature.properties.image;
       let video = feature.properties.video;
       let htmlString;
-    
-    
+
+
       if (image) {
         htmlString = `<h3>${title}</h3>
         <div><button id="addPopUpBtn" class="addBtn" type="button">Rate</button></div>
@@ -186,7 +187,7 @@ map.on("load", function (e) {
         <img src="assets/images/ratings/${feature.properties.rating}.png"/></h4>
         <h6><marquee scrollamount=4>${feature.properties.comments}</marquee></h6>
         <img id="myImg" src="${image}" style="width: 300px; height: auto">`;
-    
+
       } else if (video) {
         video = video.slice(video.lastIndexOf("/") + 1);
         htmlString = `<h3>${title}</h3>
@@ -207,60 +208,42 @@ map.on("load", function (e) {
         <img src="assets/images/ratings/${feature.properties.rating}.png"/>
         </h4><h6><marquee scrollamount=4>${feature.properties.comments}</marquee></h6>`;
       }
-    
+
       popup = new mapboxgl.Popup({
-        anchor: 'bottom'
+        anchor: 'bottom',
+        focusAfterOpen: false
       }).setLngLat(feature.geometry.coordinates)
         .setHTML(htmlString)
         .addTo(map);
-    
+
       let modal = document.getElementById("myModal");
       let img = document.getElementById("myImg");
       let modalImg = document.getElementById("img01");
-    
+
       if (img) {
         img.onclick = function () {
           console.log("onclick function entered");
           modal.style.display = "block";
           modalImg.src = this.src;
         }
-    
+
         // Get the <span> element that closes the modal
         var span = document.getElementsByClassName("close")[0];
-    
+
         // When the user clicks on <span> (x), close the modal
         span.onclick = function () {
           console.log("modal closed/hidden");
           modal.style.display = "none";
         }
       }
-    
+
       let popUpAdd = document.getElementById('addPopUpBtn');
-    
+
       popUpAdd.addEventListener('click', function () {
         popup.setDOMContent(formElement);
       });
-
-
-
-
-
-    // map.click();
     }
   }
-  /* 
-   
-    map.click(); */
-  //}
-  //}
-
-  /*  let spotlight = feature.properties.spotlight;
- console.log(features);
-   if (spotlight) {
-     
-     map.flyTo({ center: e.lngLat });
-     map.click();
-   } */
 });
 
 
