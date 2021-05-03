@@ -149,8 +149,18 @@ function setFormDate() {
     var yearsVar = document.getElementById("new-years");
     var monthsText = monthsVar.options[monthsVar.selectedIndex].text;
     var yearsText = yearsVar.options[yearsVar.selectedIndex].text;
+    var monthConvertint = parseInt(monthsText.substring(0, 2));
+    var todayDate = new Date();
+    var currentYear = todayDate.getFullYear();
+    var currentMonth = todayDate.getMonth() + 1;
     if (monthsText == "Month:") monthsText = "No Month";
     var monthYear = monthsText + " " + yearsText;
+
+    if (yearsText == currentYear && monthConvertint >= currentMonth + 1) {
+        document.getElementById("invalidDate").innerHTML = "Invalid Date Selected! *";
+        } else {
+            document.getElementById("invalidDate").innerHTML = " ";
+    }
 
     document.getElementById("finalDate").value = monthYear;
     nextButton.style.background = "var(--slate-blue)";
