@@ -1,6 +1,4 @@
-mapboxgl.accessToken = "pk.eyJ1IjoiMTA3YXZpYXRpb24iLCJhIjoiY2ttcWlndnNnMTA3NDJ3bnhmMjVzMXIxZiJ9.fjiDSkC_TC3ztI8bV-5KMw";
-
-//"pk.eyJ1IjoiMTA3YXZpYXRpb24iLCJhIjoiY2tuNmhzeWo2MGU5MTJ1am5jNml3cGRzNyJ9.o4UxcDcG8oQkylhgJ_OrQg";
+mapboxgl.accessToken = "pk.eyJ1IjoiMTA3YXZpYXRpb24iLCJhIjoiY2tuNmhzeWo2MGU5MTJ1am5jNml3cGRzNyJ9.o4UxcDcG8oQkylhgJ_OrQg";
 var map = new mapboxgl.Map({
   container: "map", // container id
   style: "mapbox://styles/107aviation/cknouazib1olc17tclqd3gef4", // stylesheet location
