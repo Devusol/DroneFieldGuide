@@ -48,7 +48,7 @@ map.on("click", function (e) {
   let image = feature.properties.image;
   let video = feature.properties.video;
   let htmlString;
-  let spotlight = feature.properties.spotlight;
+
 
   if (image) {
     htmlString = `<h3>${title}</h3>
@@ -117,7 +117,6 @@ map.on("click", function (e) {
 //lat long pin fnction and popup Form
 map.on("click", function (e) {
 
-
   if (marker) {
     marker.remove();
   }
@@ -131,7 +130,7 @@ map.on("click", function (e) {
   }
 
   marker.setLngLat(e.lngLat).addTo(map);
-  console.log("just added a marker");
+  //console.log("just added a marker");
 
   let popupForm = new mapboxgl.Popup({
     //offset: [0,275],
@@ -158,6 +157,118 @@ map.on("click", function (e) {
     }); */
 
 });
+
+map.on("load", function (e) {
+  console.log("map loaded");
+  let feature;
+  let features = map.queryRenderedFeatures(e.point, {
+    layers: ["3-30-21-dfg"] // replace this with the name of the layer
+  });
+
+
+  for (findSpotlight of features) {
+    console.log(findSpotlight.properties.spotlight);
+    if (findSpotlight.properties.spotlight) {
+      feature = findSpotlight;
+      
+      map.flyTo({ center: feature.geometry.coordinates });
+      let title = feature.properties.title;
+      let flightDate = feature.properties.latestDate;
+      let image = feature.properties.image;
+      let video = feature.properties.video;
+      let htmlString;
+    
+    
+      if (image) {
+        htmlString = `<h3>${title}</h3>
+        <div><button id="addPopUpBtn" class="addBtn" type="button">Rate</button></div>
+        <p>${flightDate}</p><h4> Rating
+        <img src="assets/images/ratings/${feature.properties.rating}.png"/></h4>
+        <h6><marquee scrollamount=4>${feature.properties.comments}</marquee></h6>
+        <img id="myImg" src="${image}" style="width: 300px; height: auto">`;
+    
+      } else if (video) {
+        video = video.slice(video.lastIndexOf("/") + 1);
+        htmlString = `<h3>${title}</h3>
+        <div><button id="addPopUpBtn" class="addBtn" type="button">Rate</button></div>
+        <p>${flightDate}</p><h4> Rating 
+        <img src="assets/images/ratings/${feature.properties.rating}.png"/></h4>
+        <h6><marquee scrollamount=4>${feature.properties.comments}</marquee></h6>
+        <iframe src='https://www.youtube.com/embed/${video}' 
+          title='YouTube video player' frameborder='0' allow='accelerometer; 
+          autoplay; clipboard-write; encrypted-media; 
+          gyroscope; picture-in-picture' allowfullscreen>
+          </iframe>`;
+      } else {
+        console.log(`no image or video property: ${image}, ${video}`);
+        htmlString = `<h3>${title}</h3>
+        <div><button id="addPopUpBtn" class="addBtn" type="button">Rate</button></div>
+        <p>${flightDate}</p><h4> Rating 
+        <img src="assets/images/ratings/${feature.properties.rating}.png"/>
+        </h4><h6><marquee scrollamount=4>${feature.properties.comments}</marquee></h6>`;
+      }
+    
+      popup = new mapboxgl.Popup({
+        anchor: 'bottom'
+      }).setLngLat(feature.geometry.coordinates)
+        .setHTML(htmlString)
+        .addTo(map);
+    
+      let modal = document.getElementById("myModal");
+      let img = document.getElementById("myImg");
+      let modalImg = document.getElementById("img01");
+    
+      if (img) {
+        img.onclick = function () {
+          console.log("onclick function entered");
+          modal.style.display = "block";
+          modalImg.src = this.src;
+        }
+    
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+    
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+          console.log("modal closed/hidden");
+          modal.style.display = "none";
+        }
+      }
+    
+      let popUpAdd = document.getElementById('addPopUpBtn');
+    
+      popUpAdd.addEventListener('click', function () {
+        popup.setDOMContent(formElement);
+      });
+
+
+
+
+
+    // map.click();
+    }
+  }
+  /* 
+   
+    map.click(); */
+  //}
+  //}
+
+  /*  let spotlight = feature.properties.spotlight;
+ console.log(features);
+   if (spotlight) {
+     
+     map.flyTo({ center: e.lngLat });
+     map.click();
+   } */
+});
+
+
+
+
+
+
+
 
 // Add the geocoder to the map
 let geocoder = new MapboxGeocoder({
