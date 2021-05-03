@@ -62,3 +62,10 @@
   .step.finish {
 	background-color:var(--cyan-process);
   }
+
+/*  Invalid Date Color */
+  #invalidDate {
+	  color: red;
+	  text-align: center;
+	  font-weight: bold;
+  }
