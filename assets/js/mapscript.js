@@ -2,8 +2,9 @@ mapboxgl.accessToken = "pk.eyJ1IjoiMTA3YXZpYXRpb24iLCJhIjoiY2tuNmhzeWo2MGU5MTJ1a
 var map = new mapboxgl.Map({
   container: "map", // container id
   style: "mapbox://styles/107aviation/cknouazib1olc17tclqd3gef4", // stylesheet location
-  center: [-81.47, 28.45],
-  zoom: 9
+  center: [-80.70556438028706, 28.39414398737118],
+  // [-81.47, 28.45],
+  zoom: 8
 });
 var marker = new mapboxgl.Marker({
   'color': '#314ccd'
