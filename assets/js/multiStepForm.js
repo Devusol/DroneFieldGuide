@@ -157,13 +157,9 @@ function setFormDate() {
     var monthYear = monthsText + " " + yearsText;
 
     if (yearsText == currentYear && monthConvertint >= currentMonth + 1) {
-        console.log("Invalid Month");
-        document.getElementById("invalidDate").innerHTML = "Invalid Date *";
+        document.getElementById("invalidDate").innerHTML = "Invalid Date Selected! *";
         } else {
-            console.log("all months are valid");
-            console.log(currentMonth , currentYear);
-            console.log( parseInt(monthsText.substring(0, 2)));
-            document.getElementById("invalidDate").innerHTML = "Valid Date, Clear";
+            document.getElementById("invalidDate").innerHTML = " ";
     }
 
     document.getElementById("finalDate").value = monthYear;
