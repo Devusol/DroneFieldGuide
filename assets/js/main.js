@@ -100,7 +100,7 @@ function feedbackButt() {
 }
 
 function delayHero() {
-  setTimeout(operateHero, 3000);
+  setTimeout(operateHero, 1500);
 }
 
 //Changed from Dark to Light Theme
